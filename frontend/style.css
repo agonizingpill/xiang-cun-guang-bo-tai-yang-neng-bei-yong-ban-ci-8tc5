@@ -71,3 +71,13 @@ label span { display:block; color:var(--soft); font-size:.875em }
 #workspace {max-width:1380px;margin:0 auto}
 .top {border-block-start:12px solid var(--accent)}
 .title {border-block-end:3px double var(--line)}
+
+.board-card { padding:1rem 1.1rem; display:grid; gap:.8rem }
+.board-head { display:flex; justify-content:space-between; align-items:baseline; gap:.8rem; flex-wrap:wrap }
+.board-head h3 { margin:0 }
+.chip { border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; color:var(--soft); background:var(--sheet); font-size:.85em }
+.board-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(9rem,100%),1fr)); gap:.5rem 1rem; margin:0 }
+.board-summary dt { color:var(--soft); font-size:.85em }
+.board-summary dd { margin:.15rem 0 0; font-weight:650 }
+.board-summary dd.neg { color:oklch(45% .17 28) }
+.board-summary dd.ok { color:oklch(42% .11 150) }

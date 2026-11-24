@@ -5,7 +5,7 @@
   "title": "从两日用量核算备用",
   "module": "备用分钟核算",
   "caption": "备用分钟核算",
-  "detail": "以 24 小时周期的 Fourier 基拟合，并保留末六小时验证。",
+  "detail": "以 24 小时周期的 Fourier 基逐小时拟合整班窗口，并按留出段内等长时窗计算整班 MAE 公用余量。",
   "path": "/reserves",
   "columns": [
     {
@@ -17,8 +17,16 @@
       "label": "节目时段"
     },
     {
+      "name": "meter",
+      "label": "电表"
+    },
+    {
+      "name": "prediction_wh",
+      "label": "整班预测 Wh"
+    },
+    {
       "name": "plan_wh",
-      "label": "计划备用 Wh"
+      "label": "建议发卡 Wh"
     },
     {
       "name": "fallback",
@@ -26,7 +34,7 @@
     },
     {
       "name": "mae",
-      "label": "时间验证MAE Wh"
+      "label": "整班MAE Wh"
     },
     {
       "name": "token",

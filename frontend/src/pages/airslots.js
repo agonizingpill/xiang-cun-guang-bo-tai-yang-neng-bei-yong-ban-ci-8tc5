@@ -5,7 +5,7 @@
   "title": "离线版权与节目时刻",
   "module": "节目时段表",
   "caption": "节目时段表",
-  "detail": "节目可以临时登记为离线，班组在签发时重新核对版权状态。",
+  "detail": "节目可以临时登记为离线，班组在签发时重新核对版权状态；各档挂在共用电池下。",
   "path": "/airslots",
   "columns": [
     {
@@ -19,6 +19,10 @@
     {
       "name": "hour",
       "label": "起播小时"
+    },
+    {
+      "name": "battery",
+      "label": "共用电池"
     },
     {
       "name": "license",

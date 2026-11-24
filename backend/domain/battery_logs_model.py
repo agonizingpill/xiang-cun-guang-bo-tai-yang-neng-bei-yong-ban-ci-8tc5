@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, CheckConstraint, Column, Float, ForeignKey, Integer, JSON, String, Table
+from sqlalchemy import Boolean, CheckConstraint, Column, Float, Integer, String, Table
 
 from core.db import metadata
 

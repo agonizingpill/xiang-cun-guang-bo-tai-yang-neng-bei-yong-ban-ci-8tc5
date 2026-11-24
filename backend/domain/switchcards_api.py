@@ -6,14 +6,21 @@ from core.db import transaction
 from core.records import scan
 from domain import switchcards_service as service
 from domain.switchcards_model import switchcards
-from domain.switchcards_schemas import IssueSwitch, Handover
+from domain.switchcards_schemas import Handover, IssueSwitch, Withdraw
 
 router = APIRouter()
+
 
 @router.get('/switchcards')
 def list_switchcards(user=Depends(actor)):
     with transaction() as conn:
         return scan(conn, switchcards)
+
+
+@router.get('/switchcards/board')
+def switchcard_board(user=Depends(actor)):
+    with transaction() as conn:
+        return service.board(conn)
 
 
 @router.post('/switchcards/issue-switch')
@@ -22,6 +29,16 @@ def issue_switch(data: IssueSwitch, user=Depends(actor)):
     with transaction() as conn:
         output = service.issue_switch(conn, user, data)
         record(conn, user, 'switchcards.issue_switch')
+        return output
+
+
+@router.post('/switchcards/withdraw')
+def withdraw(data: Withdraw, user=Depends(actor)):
+    allow(user, ('reviewer',))
+    with transaction() as conn:
+        output = service.withdraw(conn, user, data)
+        if not output.get('idempotent'):
+            record(conn, user, 'switchcards.withdraw')
         return output
 
 

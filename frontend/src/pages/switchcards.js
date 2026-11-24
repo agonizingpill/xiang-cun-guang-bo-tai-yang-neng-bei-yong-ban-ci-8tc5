@@ -5,7 +5,7 @@
   "title": "班组备播与闭台交接",
   "module": "班组备播卡",
   "caption": "班组备播卡",
-  "detail": "班次申请需要核对实际时钟源与备用评估，播后写入值守回执。",
+  "detail": "发卡额须覆盖该档整班预测；同一电池扣掉公用余量后并发发卡不能超额。撤卡释放额度且重试不重复退，已交接卡片仍占额。",
   "path": "/switchcards",
   "columns": [
     {
@@ -62,11 +62,29 @@
           "initial": 190
         }
       ],
-      "help": "时钟只影响播出流程记录，无外部控制接口。",
+      "help": "锁定电量须覆盖该档整班预测，并在电池容量扣除公用余量后的可分额度内。",
       "roles": [
         "reviewer"
       ],
       "success": "已写入"
+    },
+    {
+      "name": "withdraw",
+      "label": "撤回备播卡",
+      "path": "/switchcards/withdraw",
+      "fields": [
+        {
+          "name": "card",
+          "label": "班组备播卡",
+          "kind": "text",
+          "initial": "SW-24"
+        }
+      ],
+      "help": "已签发卡片撤卡即释放额度；重复提交幂等，不会重复退电量。已交接卡片不能撤。",
+      "roles": [
+        "reviewer"
+      ],
+      "success": "已撤卡"
     },
     {
       "name": "handover",
